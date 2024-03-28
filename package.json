@@ -1,0 +1,19 @@
+{
+  "name": "gpt-debugger",
+  "version": "1.0.0",
+  "description": "Debugging with GPT",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.ts -o dist"
+  },
+  "author": "Przeprogramowani",
+  "license": "ISC",
+  "devDependencies": {
+    "ncc": "0.3.6",
+    "typescript": "5.4.3"
+  },
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "openai": "4.29.2"
+  }
+}
