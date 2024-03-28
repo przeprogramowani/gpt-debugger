@@ -12,7 +12,7 @@ async function run(): Promise<void> {
   core.setSecret(INPUTS.OPENAI_API_KEY);
 
   const openai = new OpenAI({
-    apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
+    apiKey: process.env['OPENAI_API_KEY'],
   });
 
   core.info(process.env['GPT_DEBUG_LOG']!);

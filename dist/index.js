@@ -35200,7 +35200,7 @@ const INPUTS = {
 async function run() {
     core.setSecret(INPUTS.OPENAI_API_KEY);
     const openai = new openai_1.default({
-        apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
+        apiKey: process.env['OPENAI_API_KEY'],
     });
     core.info(process.env['GPT_DEBUG_LOG']);
     core.info('🔮 Calling GPT-4 to explain the issue...');
