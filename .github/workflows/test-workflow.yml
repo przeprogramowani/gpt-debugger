@@ -1,0 +1,17 @@
+name: Debug
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test action
+        uses: ./
+        with:
+          openai-token: ${{ secrets.OPENAI_API_KEY }}
