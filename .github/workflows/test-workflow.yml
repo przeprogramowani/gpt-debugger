@@ -15,3 +15,4 @@ jobs:
         uses: ./
         with:
           openai-token: ${{ secrets.OPENAI_API_KEY }}
+          debug-log: "Cannot find script 'dev' in package.json."
