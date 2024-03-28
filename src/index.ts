@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const GPT_DEBUG_LOG = 'gpt_debug.log';
+const ERROR_LOG_FILE_NAME = 'gpt_error.log';
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 
 async function main(): Promise<void> {
@@ -10,7 +10,7 @@ async function main(): Promise<void> {
     apiKey: process.env['OPENAI_API_KEY'],
   });
 
-  const errorLog = readFileSync(join(process.cwd(), GPT_DEBUG_LOG), 'utf8');
+  const errorLog = readFileSync(join(process.cwd(), ERROR_LOG_FILE_NAME), 'utf8');
 
   console.log('🔮 Calling GPT-4 to explain the issue...');
 

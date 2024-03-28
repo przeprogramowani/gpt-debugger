@@ -10470,13 +10470,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const openai_1 = __importDefault(__nccwpck_require__(7948));
 const fs_1 = __nccwpck_require__(7147);
 const path_1 = __nccwpck_require__(1017);
-const GPT_DEBUG_LOG = 'gpt_debug.log';
+const ERROR_LOG_FILE_NAME = 'gpt_error.log';
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 async function main() {
     const openai = new openai_1.default({
         apiKey: process.env['OPENAI_API_KEY'],
     });
-    const errorLog = (0, fs_1.readFileSync)((0, path_1.join)(process.cwd(), GPT_DEBUG_LOG), 'utf8');
+    const errorLog = (0, fs_1.readFileSync)((0, path_1.join)(process.cwd(), ERROR_LOG_FILE_NAME), 'utf8');
     console.log('🔮 Calling GPT-4 to explain the issue...');
     const prompt = `
     Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.
