@@ -18,7 +18,7 @@ async function run(): Promise<void> {
 
   core.info('🔮 Calling GPT-4 to explain the issue...');
 
-  // const errorLog = readFileSync('./error.log', 'utf-8');
+  core.info(process.env['GPT_DEBUGGER']!);
 
   // if (!errorLog) {
   //   core.info('No error log found. Exiting...');
@@ -39,7 +39,7 @@ async function run(): Promise<void> {
     The error log is wrapped with the tag ERROR_LOG.
 
     <ERROR_LOG>
-    script "dev" not found in package.json
+    ${process.env['GPT_DEBUGGER']!}
     </ERROR_LOG>
   `;
 
