@@ -16,12 +16,12 @@ export async function run(): Promise<void> {
     apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
   });
 
-  console.log('🔮 Calling GPT-4 to explain the issue...');
+  core.info('🔮 Calling GPT-4 to explain the issue...');
 
   // const errorLog = readFileSync('./error.log', 'utf-8');
 
   // if (!errorLog) {
-  //   console.log('No error log found. Exiting...');
+  //   core.info('No error log found. Exiting...');
   //   return;
   // }
 
@@ -50,5 +50,5 @@ export async function run(): Promise<void> {
 
   const modelResponse = chatCompletion.choices[0].message.content!;
 
-  console.log(modelResponse);
+  core.info(modelResponse);
 }
