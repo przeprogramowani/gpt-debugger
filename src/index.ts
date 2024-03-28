@@ -6,7 +6,7 @@ import * as core from '@actions/core';
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 
 const INPUTS = {
-  OPENAI_API_KEY: 'openai_api_key',
+  OPENAI_API_KEY: 'openai-token',
 };
 
 core.setSecret(INPUTS.OPENAI_API_KEY);
