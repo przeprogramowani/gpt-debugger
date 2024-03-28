@@ -35623,7 +35623,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.run = void 0;
 const openai_1 = __importDefault(__nccwpck_require__(7948));
 __nccwpck_require__(3399);
 const core = __importStar(__nccwpck_require__(1681));
@@ -35666,7 +35665,7 @@ async function run() {
     const modelResponse = chatCompletion.choices[0].message.content;
     core.info(modelResponse);
 }
-exports.run = run;
+run();
 
 
 /***/ }),

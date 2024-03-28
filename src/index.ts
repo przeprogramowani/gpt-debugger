@@ -9,7 +9,7 @@ const INPUTS = {
   OPENAI_API_KEY: 'openai-token',
 };
 
-export async function run(): Promise<void> {
+async function run(): Promise<void> {
   core.setSecret(INPUTS.OPENAI_API_KEY);
 
   const openai = new OpenAI({
@@ -52,3 +52,5 @@ export async function run(): Promise<void> {
 
   core.info(modelResponse);
 }
+
+run();
