@@ -1,12 +1,11 @@
 import OpenAI from 'openai';
-import 'dotenv/config';
-import { readFileSync } from 'fs';
 import * as core from '@actions/core';
 
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 
 const INPUTS = {
   OPENAI_API_KEY: 'openai-token',
+  DEBUG_LOG: 'debug-log',
 };
 
 async function run(): Promise<void> {
@@ -17,13 +16,6 @@ async function run(): Promise<void> {
   });
 
   core.info('🔮 Calling GPT-4 to explain the issue...');
-
-  core.info(process.env['GPT_DEBUGGER']!);
-
-  // if (!errorLog) {
-  //   core.info('No error log found. Exiting...');
-  //   return;
-  // }
 
   const prompt = `
     Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.
@@ -39,7 +31,7 @@ async function run(): Promise<void> {
     The error log is wrapped with the tag ERROR_LOG.
 
     <ERROR_LOG>
-    ${process.env['GPT_DEBUGGER']!}
+    ${core.getInput(INPUTS.DEBUG_LOG)}
     </ERROR_LOG>
   `;
 

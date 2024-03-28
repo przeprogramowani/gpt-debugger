@@ -5,6 +5,9 @@ inputs:
   openai-token:
     description: 'OpenAI Token'
     required: true
+  debug-log:
+    description: 'Debug Log'
+    required: true
 
 runs:
   using: 'node20'
