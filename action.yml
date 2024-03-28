@@ -10,7 +10,6 @@ runs:
   using: 'composite'
   steps:
     - name: Run GPT Debugging
-      if: ${{ failure() }}
       run: node ${GITHUB_ACTION_PATH}/dist/index.js
       shell: bash
       env:
