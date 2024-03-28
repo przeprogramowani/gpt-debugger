@@ -1,6 +1,10 @@
 name: GPT Debugging Action
 description: Debug CI/CD failure with GPT-4
 
+branding:
+  icon: 'crosshair'
+  color: 'purple'
+
 inputs:
   OPENAI_API_KEY:
     description: 'OpenAI Token'
