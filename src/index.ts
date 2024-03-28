@@ -15,6 +15,8 @@ async function run(): Promise<void> {
     apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
   });
 
+  core.info(process.env['GPT_DEBUG_LOG']!);
+
   core.info('🔮 Calling GPT-4 to explain the issue...');
 
   const prompt = `

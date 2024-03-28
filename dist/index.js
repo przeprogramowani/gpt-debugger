@@ -35202,6 +35202,7 @@ async function run() {
     const openai = new openai_1.default({
         apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
     });
+    core.info(process.env['GPT_DEBUG_LOG']);
     core.info('🔮 Calling GPT-4 to explain the issue...');
     const prompt = `
     Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.
