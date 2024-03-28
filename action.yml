@@ -7,7 +7,6 @@ inputs:
     required: true
 
 runs:
-  using: 'composite'
   steps:
     - name: Run assistant
       run: npm ci > '/dev/null' 2>&1 && npm run build > '/dev/null' 2>&1 && OPENAI_API_KEY=${{ inputs.openai-token }} npm run start
