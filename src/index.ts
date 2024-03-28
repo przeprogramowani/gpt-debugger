@@ -22,7 +22,6 @@ async function main(): Promise<void> {
 
   const prompt = buildPrompt(errorLog);
 
-  console.log('🔮 Calling GPT-4 to explain the issue...');
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
     model: OPENAI_MODEL_VERSION,
@@ -30,7 +29,7 @@ async function main(): Promise<void> {
 
   const modelResponse = chatCompletion.choices[0].message.content!;
 
-  console.log('🤖 Presenting GPT-4 analysis:');
+  console.log('🧑‍⚕️ Presenting GPT-4 issue analysis:');
   console.log(modelResponse);
 }
 

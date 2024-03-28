@@ -10484,13 +10484,12 @@ async function main() {
     }
     const errorLog = (0, fs_1.readFileSync)(logPath, 'utf8');
     const prompt = (0, prompt_1.buildPrompt)(errorLog);
-    console.log('🔮 Calling GPT-4 to explain the issue...');
     const chatCompletion = await openai.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
         model: OPENAI_MODEL_VERSION,
     });
     const modelResponse = chatCompletion.choices[0].message.content;
-    console.log('🤖 Presenting GPT-4 analysis:');
+    console.log('🧑‍⚕️ Presenting GPT-4 issue analysis:');
     console.log(modelResponse);
 }
 main();
@@ -10506,18 +10505,18 @@ main();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.buildPrompt = void 0;
 const buildPrompt = (errorLog) => `
-Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.
+Explain an error that occurred during the CI/CD workflow hosted on GitHub Actions, and suggest a solution to fix it.
 
 Follow these rules:
+- Instead of Markdown, use plaintext.
 - Be concise and to the point.
 - Avoid repeating my question in the answer.
 - Do not include any sensitive information.
 - Do not repeat the same information.
 - List files that are relevant to the error.
 - If the log is empty, do not provide a solution. Terminate the conversation.
-- Instead of Markdown, use format readable in bash terminal.
 
-The error log is wrapped with the tag ERROR_LOG.
+The error log is wrapped with the tag ERROR_LOG:
 
 <ERROR_LOG>
 ${errorLog}

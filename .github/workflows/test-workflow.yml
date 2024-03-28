@@ -11,8 +11,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Configure node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Simulate broken step
+        run: npm run test 2> gpt_error.log
+
       - name: Test action
         uses: ./
         with:
           openai-token: ${{ secrets.OPENAI_API_KEY }}
-          debug-log: "Cannot find script 'dev' in package.json."
