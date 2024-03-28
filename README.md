@@ -8,7 +8,7 @@ Debug flaky CI/CD pipelines with GPT-4.
 
 ## How to
 
-1. Redirect `stderr` of one of your steps to `gpt_error.log` file:
+1. Redirect error log of one of your failing steps to `gpt_error.log` file:
 2. Add new step to your workflow and mark it with either `always()` or `failure()` expression:
 
 ```yaml
