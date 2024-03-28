@@ -1,23 +1,18 @@
 import OpenAI from 'openai';
-import * as core from '@actions/core';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
+const GPT_DEBUG_LOG = 'gpt_debug.log';
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 
-const INPUTS = {
-  OPENAI_API_KEY: 'openai-token',
-  DEBUG_LOG: 'debug-log',
-};
-
-async function run(): Promise<void> {
-  core.setSecret(INPUTS.OPENAI_API_KEY);
-
+async function main(): Promise<void> {
   const openai = new OpenAI({
     apiKey: process.env['OPENAI_API_KEY'],
   });
 
-  core.info(process.env['GPT_DEBUG_LOG']!);
+  const errorLog = readFileSync(join(process.cwd(), GPT_DEBUG_LOG), 'utf8');
 
-  core.info('🔮 Calling GPT-4 to explain the issue...');
+  console.log('🔮 Calling GPT-4 to explain the issue...');
 
   const prompt = `
     Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.
@@ -34,7 +29,7 @@ async function run(): Promise<void> {
     The error log is wrapped with the tag ERROR_LOG.
 
     <ERROR_LOG>
-    ${core.getInput(INPUTS.DEBUG_LOG)}
+    ${errorLog}
     </ERROR_LOG>
   `;
 
@@ -45,7 +40,7 @@ async function run(): Promise<void> {
 
   const modelResponse = chatCompletion.choices[0].message.content!;
 
-  core.info(modelResponse);
+  console.log(modelResponse);
 }
 
-run();
+main();
