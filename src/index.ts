@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 import 'dotenv/config';
 import { readFileSync } from 'fs';
-import core from '@actions/core';
+import * as core from '@actions/core';
 
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 
