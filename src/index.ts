@@ -9,13 +9,13 @@ const INPUTS = {
   OPENAI_API_KEY: 'openai-token',
 };
 
-core.setSecret(INPUTS.OPENAI_API_KEY);
+export async function run(): Promise<void> {
+  core.setSecret(INPUTS.OPENAI_API_KEY);
 
-const openai = new OpenAI({
-  apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
-});
+  const openai = new OpenAI({
+    apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
+  });
 
-async function main() {
   console.log('🔮 Calling GPT-4 to explain the issue...');
 
   // const errorLog = readFileSync('./error.log', 'utf-8');
@@ -52,5 +52,3 @@ async function main() {
 
   console.log(modelResponse);
 }
-
-main();

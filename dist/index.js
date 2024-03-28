@@ -35623,18 +35623,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.run = void 0;
 const openai_1 = __importDefault(__nccwpck_require__(7948));
 __nccwpck_require__(3399);
 const core = __importStar(__nccwpck_require__(1681));
 const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
 const INPUTS = {
-    OPENAI_API_KEY: 'openai_api_key',
+    OPENAI_API_KEY: 'openai-token',
 };
-core.setSecret(INPUTS.OPENAI_API_KEY);
-const openai = new openai_1.default({
-    apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
-});
-async function main() {
+async function run() {
+    core.setSecret(INPUTS.OPENAI_API_KEY);
+    const openai = new openai_1.default({
+        apiKey: core.getInput(INPUTS.OPENAI_API_KEY),
+    });
     console.log('🔮 Calling GPT-4 to explain the issue...');
     // const errorLog = readFileSync('./error.log', 'utf-8');
     // if (!errorLog) {
@@ -35665,7 +35666,7 @@ async function main() {
     const modelResponse = chatCompletion.choices[0].message.content;
     console.log(modelResponse);
 }
-main();
+exports.run = run;
 
 
 /***/ }),
