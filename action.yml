@@ -5,13 +5,6 @@ inputs:
   OPENAI_API_KEY:
     description: 'OpenAI Token'
     required: true
-#   debug-log:
-#     description: 'Debug Log'
-#     required: true
-
-# runs:
-#   using: 'node20'
-#   main: dist/index.js
 
 runs:
   using: 'composite'

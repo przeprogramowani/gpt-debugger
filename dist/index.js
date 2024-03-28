@@ -10476,7 +10476,12 @@ async function main() {
     const openai = new openai_1.default({
         apiKey: process.env['OPENAI_API_KEY'],
     });
-    const errorLog = (0, fs_1.readFileSync)((0, path_1.join)(process.cwd(), ERROR_LOG_FILE_NAME), 'utf8');
+    const logPath = (0, path_1.join)(process.cwd(), ERROR_LOG_FILE_NAME);
+    if (!(0, fs_1.existsSync)(logPath)) {
+        console.error(`❌ Error log file not found at ${logPath}`);
+        process.exit(1);
+    }
+    const errorLog = (0, fs_1.readFileSync)(logPath, 'utf8');
     console.log('🔮 Calling GPT-4 to explain the issue...');
     const prompt = `
     Explain an error that occurred during the CI/CD workflow and suggest a solution to fix it.

@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 const ERROR_LOG_FILE_NAME = 'gpt_error.log';
@@ -10,7 +10,14 @@ async function main(): Promise<void> {
     apiKey: process.env['OPENAI_API_KEY'],
   });
 
-  const errorLog = readFileSync(join(process.cwd(), ERROR_LOG_FILE_NAME), 'utf8');
+  const logPath = join(process.cwd(), ERROR_LOG_FILE_NAME);
+
+  if (!existsSync(logPath)) {
+    console.error(`❌ Error log file not found at ${logPath}`);
+    process.exit(1);
+  }
+
+  const errorLog = readFileSync(logPath, 'utf8');
 
   console.log('🔮 Calling GPT-4 to explain the issue...');
 
