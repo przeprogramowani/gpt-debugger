@@ -1,6 +1,6 @@
 # CI/CD Debugger
 
-Debug flaky CI/CD pipelines with models such as GPT-4 or Claude.
+Debug flaky CI/CD pipelines with models such as GPT-4 or Claude 3.
 
 ## Inputs
 
