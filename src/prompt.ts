@@ -18,5 +18,5 @@ Follow these rules:
 - Avoid repeating my question in the answer.
 - Do not include any sensitive information.
 - Do not repeat the same information.
-- Instead of Markdown, use plaintext.
+- Do not use Markdown. The response will be logged into the console.
 `;
