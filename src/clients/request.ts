@@ -3,10 +3,12 @@ import { anthropicDebugRequest } from './anthropic';
 
 export async function generateDebugResponse(prompt: string) {
   if (process.env['OPENAI_API_KEY'] != null) {
+    console.log('Using OpenAI model to debug the error log.');
     return await openAIDebugRequest(process.env['OPENAI_API_KEY'], prompt);
   }
 
   if (process.env['ANTHROPIC_API_KEY'] != null) {
+    console.log('Using Anthropic model to debug the error log.');
     return await anthropicDebugRequest(process.env['ANTHROPIC_API_KEY'], prompt);
   }
 
