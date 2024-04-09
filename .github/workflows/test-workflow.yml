@@ -21,6 +21,7 @@ jobs:
         run: npm run test 2> gpt_error.log
 
       - name: Test action
+        if: ${{ always() }}
         uses: ./
         with:
           openai-token: ${{ secrets.OPENAI_API_KEY }}
