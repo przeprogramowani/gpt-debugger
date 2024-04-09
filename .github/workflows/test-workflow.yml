@@ -30,4 +30,4 @@ jobs:
         if: ${{ always() }}
         uses: ./
         with:
-          OPENAI_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
