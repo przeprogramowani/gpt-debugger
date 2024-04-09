@@ -14,7 +14,6 @@ async function main(): Promise<void> {
   }
 
   const errorLog = readFileSync(logPath, 'utf8');
-
   const prompt = buildPrompt(errorLog);
 
   const debugResponse = await generateDebugResponse(prompt);

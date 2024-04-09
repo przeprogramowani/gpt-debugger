@@ -10523,10 +10523,12 @@ exports.generateDebugResponse = void 0;
 const openai_1 = __nccwpck_require__(2566);
 const anthropic_1 = __nccwpck_require__(4114);
 async function generateDebugResponse(prompt) {
-    if (process.env['OPENAI_API_KEY'] != null) {
+    if (process.env['OPENAI_API_KEY']) {
+        console.log('Using OpenAI model to debug the error log.');
         return await (0, openai_1.openAIDebugRequest)(process.env['OPENAI_API_KEY'], prompt);
     }
-    if (process.env['ANTHROPIC_API_KEY'] != null) {
+    if (process.env['ANTHROPIC_API_KEY']) {
+        console.log('Using Anthropic model to debug the error log.');
         return await (0, anthropic_1.anthropicDebugRequest)(process.env['ANTHROPIC_API_KEY'], prompt);
     }
     throw new Error('Provide one of the supported API Keys to get started.');
@@ -10563,7 +10565,7 @@ Follow these rules:
 - Avoid repeating my question in the answer.
 - Do not include any sensitive information.
 - Do not repeat the same information.
-- Instead of Markdown, use plaintext.
+- Do not use Markdown. The response will be logged into the console.
 `;
 exports.buildPrompt = buildPrompt;
 
