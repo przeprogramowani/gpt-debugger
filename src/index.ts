@@ -1,16 +1,11 @@
-import OpenAI from 'openai';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { buildPrompt } from './prompt';
+import { generateDebugResponse } from './clients/request';
 
 const ERROR_LOG_FILE_NAME = 'gpt_error.log';
-const OPENAI_MODEL_VERSION = 'gpt-4-turbo';
 
 async function main(): Promise<void> {
-  const openai = new OpenAI({
-    apiKey: process.env['OPENAI_API_KEY'],
-  });
-
   const logPath = join(process.cwd(), ERROR_LOG_FILE_NAME);
 
   if (!existsSync(logPath)) {
@@ -22,15 +17,10 @@ async function main(): Promise<void> {
 
   const prompt = buildPrompt(errorLog);
 
-  const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: 'user', content: prompt }],
-    model: OPENAI_MODEL_VERSION,
-  });
+  const debugResponse = await generateDebugResponse(prompt);
 
-  const modelResponse = chatCompletion.choices[0].message.content!;
-
-  console.log('🧑‍⚕️ Presenting GPT-4 issue analysis:');
-  console.log(modelResponse);
+  console.log('🧑‍⚕️ Presenting issue analysis:');
+  console.log(debugResponse);
 }
 
 main();

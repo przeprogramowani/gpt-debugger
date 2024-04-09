@@ -1,4 +1,4 @@
-name: Debug
+name: Test action
 
 on:
   workflow_dispatch:
@@ -20,8 +20,14 @@ jobs:
       - name: Simulate broken step
         run: npm run test 2> gpt_error.log
 
-      - name: Test action
+      - name: Analyze error log with GPT-4
         if: ${{ always() }}
         uses: ./
         with:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Analyze error log with Claude
+        if: ${{ always() }}
+        uses: ./
+        with:
+          OPENAI_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

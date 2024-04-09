@@ -1,5 +1,5 @@
-name: GPT Debugging Action
-description: Debug CI/CD failure with GPT-4
+name: CI/CD Debugger
+description: Debug CI/CD failures with LLMs
 
 branding:
   icon: 'crosshair'
@@ -7,14 +7,16 @@ branding:
 
 inputs:
   OPENAI_API_KEY:
-    description: 'OpenAI Token'
-    required: true
+    description: 'OpenAI API Key'
+  ANTHROPIC_API_KEY:
+    description: 'Anthropic API Key'
 
 runs:
   using: 'composite'
   steps:
-    - name: Run GPT Debugging
+    - name: Run AI Debugging
       run: node ${GITHUB_ACTION_PATH}/dist/index.js
       shell: bash
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
+        ANTHROPIC_API_KEY: ${{ inputs.ANTHROPIC_API_KEY }}

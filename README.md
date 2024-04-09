@@ -1,10 +1,14 @@
-# GPT Debugger
+# CI/CD Debugger
 
-Debug flaky CI/CD pipelines with GPT-4.
+Debug flaky CI/CD pipelines with models such as GPT-4 or Claude.
 
 ## Inputs
 
-- `OPENAI_API_KEY` - OpenAI API key. You can get it from [OpenAI](https://platform.openai.com/account/api-keys).
+By providing one of the inputs, the action will use the specified model to analyze the error log:
+
+- `OPENAI_API_KEY` - OpenAI API key. You can get it from [OpenAI Console](https://platform.openai.com/account/api-keys). When provided, the action will use GPT-4 model to analyze the error message.
+
+- `ANTHROPIC_API_KEY` - Anthropic API key. You can get it from [Anthropic console](https://console.anthropic.com/). Then provided, the action will use Claude model to analyze the error message.
 
 ## How to
 

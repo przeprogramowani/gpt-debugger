@@ -14,6 +14,7 @@
     "typescript": "5.4.3"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.20.2",
     "openai": "4.29.2"
   }
 }
