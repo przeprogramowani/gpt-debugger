@@ -4,7 +4,7 @@ import { join } from 'path';
 import { buildPrompt } from './prompt';
 
 const ERROR_LOG_FILE_NAME = 'gpt_error.log';
-const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
+const OPENAI_MODEL_VERSION = 'gpt-4-turbo';
 
 async function main(): Promise<void> {
   const openai = new OpenAI({

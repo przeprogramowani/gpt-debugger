@@ -10472,7 +10472,7 @@ const fs_1 = __nccwpck_require__(7147);
 const path_1 = __nccwpck_require__(1017);
 const prompt_1 = __nccwpck_require__(6495);
 const ERROR_LOG_FILE_NAME = 'gpt_error.log';
-const OPENAI_MODEL_VERSION = 'gpt-4-0125-preview';
+const OPENAI_MODEL_VERSION = 'gpt-4-turbo';
 async function main() {
     const openai = new openai_1.default({
         apiKey: process.env['OPENAI_API_KEY'],
