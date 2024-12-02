@@ -10,7 +10,7 @@
   "author": "Przeprogramowani",
   "license": "ISC",
   "devDependencies": {
-    "@vercel/ncc": "0.38.2",
+    "@vercel/ncc": "0.38.3",
     "typescript": "5.5.2"
   },
   "dependencies": {
