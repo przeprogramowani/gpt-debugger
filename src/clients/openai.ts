@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 
-const OPENAI_MODEL_VERSION = 'gpt-4o-2024-05-13';
+const OPENAI_MODEL_VERSION = 'gpt-4o';
 
 export const openAIDebugRequest: DebugRequest = async (apiKey: string, prompt: string) => {
   const openai = new OpenAI({
