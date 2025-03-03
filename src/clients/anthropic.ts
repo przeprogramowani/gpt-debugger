@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-const CLAUDE_MODEL_VERSION = 'claude-3-opus-20240229';
+const CLAUDE_MODEL_VERSION = 'claude-3-7-sonnet-20250219';
 
 export const anthropicDebugRequest: DebugRequest = async (apiKey: string, prompt: string) => {
   const anthropic = new Anthropic({
