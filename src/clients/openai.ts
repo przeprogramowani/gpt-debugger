@@ -1,6 +1,5 @@
 import OpenAI from 'openai';
-
-const OPENAI_MODEL_VERSION = 'gpt-4o';
+import { AI_MODELS } from '../models';
 
 export const openAIDebugRequest: DebugRequest = async (apiKey: string, prompt: string) => {
   const openai = new OpenAI({
@@ -9,7 +8,7 @@ export const openAIDebugRequest: DebugRequest = async (apiKey: string, prompt: s
 
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: OPENAI_MODEL_VERSION,
+    model: AI_MODELS.openai.gpt4o,
   });
 
   return chatCompletion.choices[0].message.content!;
