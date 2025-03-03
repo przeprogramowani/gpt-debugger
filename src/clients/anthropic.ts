@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-const CLAUDE_MODEL_VERSION = 'claude-3-7-sonnet-20250219';
+const CLAUDE_MODEL_VERSION = 'claude-3-opus-20240229';
 
 export const anthropicDebugRequest: DebugRequest = async (apiKey: string, prompt: string) => {
   const anthropic = new Anthropic({
@@ -13,5 +13,9 @@ export const anthropicDebugRequest: DebugRequest = async (apiKey: string, prompt
     messages: [{ role: 'user', content: prompt }],
   });
 
-  return chatCompletion.content[0].text;
+  if (chatCompletion.content[0].type === 'text') {
+    return chatCompletion.content[0].text;
+  } else {
+    return 'Unsupported content type';
+  }
 };
