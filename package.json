@@ -11,7 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@vercel/ncc": "0.38.3",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.39.0",
